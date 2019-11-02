@@ -18,6 +18,7 @@ app.get('/video',(req,res,next)=>{
 
     const path='./assets/sample.mp4';
     const stat=fs.statSync(path);
+    
     const fileSize=stat.size;
 
     //console.log(stat);
@@ -25,11 +26,13 @@ app.get('/video',(req,res,next)=>{
     
     const range = req.headers.range;
 
-    console.log(range);
+    //console.log(range);
     
     if (range) {
         const parts = range.replace(/bytes=/, "").split("-");
         const start = parseInt(parts[0], 10);
+        console.log(start);
+        
         const end = parts[1] ? parseInt(parts[1], 10) : fileSize - 1;
 
         const chunksize = (end - start) + 1;
