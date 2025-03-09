@@ -6,12 +6,12 @@ const port=process.env.port || 3652;
 
 const server=http.createServer((req,res)=>{
 
-    /* const file=fs.readFile('./docs.txt',(error,data)=>{
+    //  fs.readFile('./docs.txt',(error,data)=>{
 
-        //console.log(data.toString());
-        res.end(data);
+    //     console.log(data.toString());
+    //     res.end(data);
         
-    });  */
+    // });  
    
     const stream=fs.createReadStream('./docs.txt');
     stream.pipe(res);    
